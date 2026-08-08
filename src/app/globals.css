@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #0b1220;
+  --bg-elevated: #121a2b;
+  --text: #e8eef8;
+  --muted: #9aa8c0;
+  --accent: #2dd4bf;
+  --accent-dim: #0f766e;
+  --border: #243049;
+  --danger: #f87171;
+  --font-display: "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+  --font-body: "Segoe UI", "PingFang SC", "Noto Sans SC", sans-serif;
+}
+
+body {
+  background: radial-gradient(1200px 600px at 10% -10%, #16324a 0%, transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, #1a2a1f 0%, transparent 50%), var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+}
