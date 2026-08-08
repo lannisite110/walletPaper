@@ -30,7 +30,7 @@
 # 站点基础识别
 NEXT_PUBLIC_SITE_ID="site-wallet"
 NEXT_PUBLIC_SITE_NAME="Wallet Paper Themes"
-NEXT_PUBLIC_SITE_URL="https://walletpaper.vercel.app"
+NEXT_PUBLIC_SITE_URL="https://wallet-paper.vercel.app"
 
 # 全局聚合分析 (100站共用一个GA4或Umami看板)
 NEXT_PUBLIC_GA_TRACKING_ID=""
@@ -67,7 +67,7 @@ draft: false
 ### 2. 标准防冲突 URL 路由模式
 * **规则**：绝不使用深层无规则路由，所有内容路由统一使用 `/posts/[slug]` 或 `/tools/[slug]`。
 * **合并公式**：
-  * **前期独立**：`walletpaper.vercel.app/posts/[slug]`
+  * **前期独立**：`wallet-paper.vercel.app/posts/[slug]`
   * **后期合并**：`main-hub.com/category-a/posts/[slug]` （只需对文件夹重命名，无需修改 slug）
 
 ---
