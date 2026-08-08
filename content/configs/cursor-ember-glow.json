@@ -1,0 +1,8 @@
+{
+  "name": "Ember Glow",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#1a0f0a",
+    "editor.foreground": "#f5e6d8"
+  }
+}

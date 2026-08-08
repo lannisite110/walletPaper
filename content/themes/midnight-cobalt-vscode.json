@@ -19,7 +19,7 @@
     "download": {
       "enabled": true,
       "label": "Theme pack (.vsix / zip)",
-      "filePath": "/downloads/midnight-cobalt.vsix",
+      "filePath": "/downloads/midnight-cobalt.zip",
       "fileSize": "24KB"
     }
   },

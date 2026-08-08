@@ -1,0 +1,34 @@
+{
+  "id": "site-wallet-theme-002",
+  "slug": "cursor-ember-glow",
+  "title": "Ember Glow",
+  "description": "Warm dark theme for Cursor with ember accents.",
+  "tool": "cursor",
+  "status": "ready",
+  "sourceType": "original",
+  "tags": ["dark", "warm", "orange"],
+  "previewImage": "/themes/cursor-ember-glow/preview.webp",
+  "gallery": [],
+  "deliverables": {
+    "copyConfig": {
+      "enabled": true,
+      "format": "json",
+      "label": "Cursor theme JSON",
+      "contentPath": "content/configs/cursor-ember-glow.json"
+    },
+    "download": {
+      "enabled": false
+    }
+  },
+  "attribution": {
+    "author": "MatrixBot",
+    "license": "MIT",
+    "sourceUrl": null,
+    "notes": null
+  },
+  "apiSlot": null,
+  "pubDate": "2026-08-08",
+  "updatedDate": "2026-08-08",
+  "draft": false,
+  "featured": false
+}

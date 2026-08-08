@@ -1,0 +1,32 @@
+{
+  "id": "site-wallet-theme-003",
+  "slug": "jetbrains-slate-reserve",
+  "title": "Slate Reserve",
+  "description": "Curated JetBrains color scheme preview.",
+  "tool": "jetbrains",
+  "status": "placeholder",
+  "sourceType": "curated",
+  "tags": ["dark", "slate"],
+  "previewImage": "",
+  "gallery": [],
+  "deliverables": {
+    "copyConfig": { "enabled": false },
+    "download": { "enabled": false }
+  },
+  "attribution": {
+    "author": "Upstream author",
+    "license": "MIT",
+    "sourceUrl": "https://plugins.jetbrains.com/plugin/12100-darcula-theme",
+    "notes": "Preview and taxonomy only; install at source."
+  },
+  "apiSlot": {
+    "owner": "jetbrains",
+    "purpose": "future-theme-preview-api",
+    "status": "reserved",
+    "note": "Reserved: JetBrains theme preview/sync API, not wired yet."
+  },
+  "pubDate": "2026-08-08",
+  "updatedDate": "2026-08-08",
+  "draft": false,
+  "featured": false
+}

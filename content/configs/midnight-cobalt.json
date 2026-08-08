@@ -1,0 +1,8 @@
+{
+  "name": "Midnight Cobalt",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#0b1220",
+    "editor.foreground": "#e8eef8"
+  }
+}
