@@ -1,0 +1,9 @@
+{
+  "id": "site-wallet-tool-cursor",
+  "slug": "cursor",
+  "name": "Cursor",
+  "description": "AI editor themes as JSON.",
+  "icon": "/tools/cursor.svg",
+  "capability": "full",
+  "supportedDeliverables": ["copyConfig"]
+}

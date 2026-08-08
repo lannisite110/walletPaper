@@ -1,0 +1,9 @@
+{
+  "id": "site-wallet-tool-sourcetree",
+  "slug": "sourcetree",
+  "name": "Sourcetree",
+  "description": "Reserved slot for Git client themes.",
+  "icon": "/tools/sourcetree.svg",
+  "capability": "placeholder",
+  "supportedDeliverables": []
+}

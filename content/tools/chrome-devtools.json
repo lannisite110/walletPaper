@@ -1,0 +1,9 @@
+{
+  "id": "site-wallet-tool-chrome-devtools",
+  "slug": "chrome-devtools",
+  "name": "Chrome DevTools",
+  "description": "Reserved slot for DevTools theme preview API.",
+  "icon": "/tools/chrome-devtools.svg",
+  "capability": "placeholder",
+  "supportedDeliverables": []
+}

@@ -1,0 +1,9 @@
+{
+  "id": "site-wallet-tool-jetbrains",
+  "slug": "jetbrains",
+  "name": "JetBrains",
+  "description": "IDE color schemes and plugin themes.",
+  "icon": "/tools/jetbrains.svg",
+  "capability": "full",
+  "supportedDeliverables": ["copyConfig", "download"]
+}

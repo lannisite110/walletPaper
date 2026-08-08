@@ -1,0 +1,10 @@
+{
+  "id": "site-wallet-tool-vscode",
+  "slug": "vscode",
+  "name": "VS Code",
+  "description": "Editor themes as JSON / VSIX.",
+  "icon": "/tools/vscode.svg",
+  "capability": "full",
+  "installPostSlug": "install-vscode-theme",
+  "supportedDeliverables": ["copyConfig", "download"]
+}

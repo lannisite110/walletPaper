@@ -1,0 +1,27 @@
+{
+  "id": "site-wallet-theme-draft",
+  "slug": "draft-hidden-theme",
+  "title": "Draft Hidden",
+  "description": "Should not appear in public lists.",
+  "tool": "vscode",
+  "status": "ready",
+  "sourceType": "original",
+  "tags": [],
+  "previewImage": "",
+  "gallery": [],
+  "deliverables": {
+    "copyConfig": { "enabled": false },
+    "download": { "enabled": false }
+  },
+  "attribution": {
+    "author": "MatrixBot",
+    "license": "MIT",
+    "sourceUrl": null,
+    "notes": null
+  },
+  "apiSlot": null,
+  "pubDate": "2026-08-07",
+  "updatedDate": "2026-08-07",
+  "draft": true,
+  "featured": false
+}

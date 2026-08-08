@@ -1,0 +1,9 @@
+{
+  "id": "site-wallet-tool-github-desktop",
+  "slug": "github-desktop",
+  "name": "GitHub Desktop",
+  "description": "Reserved slot for Git client themes.",
+  "icon": "/tools/github-desktop.svg",
+  "capability": "placeholder",
+  "supportedDeliverables": []
+}

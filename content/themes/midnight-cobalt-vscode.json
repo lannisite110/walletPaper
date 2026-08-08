@@ -1,0 +1,37 @@
+{
+  "id": "site-wallet-theme-001",
+  "slug": "midnight-cobalt-vscode",
+  "title": "Midnight Cobalt",
+  "description": "Cool dark theme for long coding sessions.",
+  "tool": "vscode",
+  "status": "ready",
+  "sourceType": "original",
+  "tags": ["dark", "blue", "minimal"],
+  "previewImage": "/themes/midnight-cobalt/preview.webp",
+  "gallery": ["/themes/midnight-cobalt/editor.webp"],
+  "deliverables": {
+    "copyConfig": {
+      "enabled": true,
+      "format": "json",
+      "label": "VS Code theme JSON",
+      "contentPath": "content/configs/midnight-cobalt.json"
+    },
+    "download": {
+      "enabled": true,
+      "label": "Theme pack (.vsix / zip)",
+      "filePath": "/downloads/midnight-cobalt.vsix",
+      "fileSize": "24KB"
+    }
+  },
+  "attribution": {
+    "author": "MatrixBot",
+    "license": "MIT",
+    "sourceUrl": null,
+    "notes": null
+  },
+  "apiSlot": null,
+  "pubDate": "2026-08-08",
+  "updatedDate": "2026-08-08",
+  "draft": false,
+  "featured": true
+}
