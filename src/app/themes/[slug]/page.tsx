@@ -20,6 +20,25 @@ export function generateStaticParams() {
   return getAllThemes().map((theme) => ({ slug: theme.slug }));
 }
 
+function usablePreviewImage(previewImage: string | undefined | null): string | null {
+  if (!previewImage) {
+    return null;
+  }
+
+  if (!previewImage.startsWith("/")) {
+    return previewImage.startsWith("https://") || previewImage.startsWith("http://")
+      ? previewImage
+      : null;
+  }
+
+  const publicDirectory = path.resolve(process.cwd(), "public");
+  const imagePath = path.resolve(publicDirectory, `.${previewImage}`);
+
+  return imagePath.startsWith(`${publicDirectory}${path.sep}`) && fs.existsSync(imagePath)
+    ? previewImage
+    : null;
+}
+
 export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const theme = getThemeBySlug(slug);
@@ -29,9 +48,25 @@ export async function generateMetadata({ params }: PageProps) {
     return {};
   }
 
+  const title = `${theme.title} — ${tool.name} theme`;
+  const description = theme.description;
+  const ogImage = usablePreviewImage(theme.previewImage) ?? "/og-default.svg";
+
   return {
-    title: `${theme.title} — ${tool.name} theme`,
-    description: theme.description,
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      images: [{ url: ogImage, alt: `${theme.title} theme preview` }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 

@@ -7,14 +7,29 @@ import "./globals.css";
 
 const site = getSiteConfig();
 
+const siteDescription =
+  "Developer themes for VS Code, Cursor, JetBrains, and reserved tool slots.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.siteUrl),
   title: {
     default: site.siteName,
     template: `%s | ${site.siteName}`,
   },
-  description:
-    "Developer themes for VS Code, Cursor, JetBrains, and reserved tool slots.",
+  description: siteDescription,
+  openGraph: {
+    type: "website",
+    siteName: site.siteName,
+    title: site.siteName,
+    description: siteDescription,
+    images: [{ url: "/og-default.svg", alt: site.siteName }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: site.siteName,
+    description: siteDescription,
+    images: ["/og-default.svg"],
+  },
 };
 
 export default function RootLayout({
