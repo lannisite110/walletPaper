@@ -16,3 +16,13 @@
 ## Notes
 
 - Posts use the existing plain Markdown syntax inside `.mdx` files with a small frontmatter/parser renderer, avoiding an additional runtime dependency.
+
+## Review Fix
+
+- Replaced the custom frontmatter parser with `gray-matter` and the custom Markdown renderer with `react-markdown`.
+- The `install-vscode-theme` sample post remains public, draft posts remain filtered before static parameter generation, and the loader test now checks parsed YAML tags.
+
+## Fix Verification
+
+- `npm test` passed: 4 test files and 9 tests.
+- `npm run build` passed: the static `install-vscode-theme` post route was generated.

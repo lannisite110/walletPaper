@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import matter from "gray-matter";
 
 export type Post = {
   id: string;
@@ -17,58 +18,26 @@ export type Post = {
 
 const POSTS_DIR = path.join(process.cwd(), "content", "posts");
 
-function parseScalar(value: string): string | boolean | string[] {
-  const trimmed = value.trim();
-
-  if (trimmed === "true" || trimmed === "false") {
-    return trimmed === "true";
-  }
-
-  if (trimmed.startsWith("[") && trimmed.endsWith("]")) {
-    return trimmed
-      .slice(1, -1)
-      .split(",")
-      .map((item) => item.trim().replace(/^["']|["']$/g, ""))
-      .filter(Boolean);
-  }
-
-  return trimmed.replace(/^["']|["']$/g, "");
-}
-
 function parsePost(filePath: string): Post {
   const raw = fs.readFileSync(filePath, "utf8");
-  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  const { data, content } = matter(raw);
 
-  if (!match) {
+  if (!Object.keys(data).length) {
     throw new Error(`Post ${path.basename(filePath)} is missing frontmatter`);
   }
 
-  const frontmatter = Object.fromEntries(
-    match[1]
-      .split(/\r?\n/)
-      .filter(Boolean)
-      .map((line) => {
-        const separator = line.indexOf(":");
-        if (separator === -1) {
-          throw new Error(`Invalid frontmatter line in ${path.basename(filePath)}`);
-        }
-
-        return [line.slice(0, separator).trim(), parseScalar(line.slice(separator + 1))];
-      }),
-  );
-
   return {
-    id: String(frontmatter.id ?? ""),
-    title: String(frontmatter.title ?? ""),
-    description: String(frontmatter.description ?? ""),
-    slug: String(frontmatter.slug ?? ""),
-    pubDate: String(frontmatter.pubDate ?? ""),
-    updatedDate: String(frontmatter.updatedDate ?? ""),
-    category: String(frontmatter.category ?? ""),
-    tags: Array.isArray(frontmatter.tags) ? frontmatter.tags : [],
-    author: String(frontmatter.author ?? ""),
-    draft: frontmatter.draft === true,
-    content: match[2].trim(),
+    id: String(data.id ?? ""),
+    title: String(data.title ?? ""),
+    description: String(data.description ?? ""),
+    slug: String(data.slug ?? ""),
+    pubDate: String(data.pubDate ?? ""),
+    updatedDate: String(data.updatedDate ?? ""),
+    category: String(data.category ?? ""),
+    tags: Array.isArray(data.tags) ? data.tags.map(String) : [],
+    author: String(data.author ?? ""),
+    draft: data.draft === true,
+    content: content.trim(),
   };
 }
 

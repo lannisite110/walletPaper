@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import ReactMarkdown from "react-markdown";
 import { getAllPosts, getPostBySlug } from "@/lib/content/loadPosts";
 
 type PageProps = {
@@ -13,56 +14,6 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = await params;
   const post = getPostBySlug(slug);
   return post ? { title: post.title, description: post.description } : {};
-}
-
-function MarkdownContent({ content }: { content: string }) {
-  const lines = content.split(/\r?\n/);
-  const blocks: React.ReactNode[] = [];
-  let list: string[] = [];
-
-  function flushList() {
-    if (!list.length) {
-      return;
-    }
-
-    blocks.push(
-      <ol key={`list-${blocks.length}`} className="list-decimal space-y-2 pl-6">
-        {list.map((item) => (
-          <li key={item}>{item}</li>
-        ))}
-      </ol>,
-    );
-    list = [];
-  }
-
-  for (const line of lines) {
-    const orderedItem = line.match(/^\d+\.\s+(.+)$/);
-    if (orderedItem) {
-      list.push(orderedItem[1]);
-      continue;
-    }
-
-    flushList();
-    if (!line.trim()) {
-      continue;
-    }
-    if (line.startsWith("## ")) {
-      blocks.push(
-        <h2 key={`heading-${blocks.length}`} className="mt-8 text-2xl font-semibold text-[var(--text)]">
-          {line.slice(3)}
-        </h2>,
-      );
-      continue;
-    }
-    blocks.push(
-      <p key={`paragraph-${blocks.length}`} className="leading-7">
-        {line}
-      </p>,
-    );
-  }
-  flushList();
-
-  return <div className="space-y-4 text-[var(--muted)]">{blocks}</div>;
 }
 
 export default async function PostPage({ params }: PageProps) {
@@ -91,7 +42,19 @@ export default async function PostPage({ params }: PageProps) {
         ))}
       </div>
       <article className="mt-10 border-t border-[var(--border)] pt-2">
-        <MarkdownContent content={post.content} />
+        <div className="space-y-4 text-[var(--muted)]">
+          <ReactMarkdown
+            components={{
+              h2: ({ children }) => (
+                <h2 className="mt-8 text-2xl font-semibold text-[var(--text)]">{children}</h2>
+              ),
+              ol: ({ children }) => <ol className="list-decimal space-y-2 pl-6">{children}</ol>,
+              p: ({ children }) => <p className="leading-7">{children}</p>,
+            }}
+          >
+            {post.content}
+          </ReactMarkdown>
+        </div>
       </article>
     </main>
   );

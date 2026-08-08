@@ -10,6 +10,7 @@ describe("loadPosts", () => {
       title: "Install a VS Code theme from Wallet Paper",
       draft: false,
     });
+    expect(post?.tags).toEqual(["vscode", "install"]);
     expect(post?.content).toContain("Open the theme page");
   });
 
