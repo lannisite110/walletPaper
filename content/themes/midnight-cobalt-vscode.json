@@ -7,8 +7,8 @@
   "status": "ready",
   "sourceType": "original",
   "tags": ["dark", "blue", "minimal"],
-  "previewImage": "/themes/midnight-cobalt/preview.webp",
-  "gallery": ["/themes/midnight-cobalt/editor.webp"],
+  "previewImage": "/themes/midnight-cobalt/preview.png",
+  "gallery": ["/themes/midnight-cobalt/editor.png"],
   "deliverables": {
     "copyConfig": {
       "enabled": true,

@@ -7,7 +7,7 @@
   "status": "placeholder",
   "sourceType": "curated",
   "tags": ["dark", "slate"],
-  "previewImage": "",
+  "previewImage": "/themes/jetbrains-slate-reserve/preview.png",
   "gallery": [],
   "deliverables": {
     "copyConfig": { "enabled": false },
