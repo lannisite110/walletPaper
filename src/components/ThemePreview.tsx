@@ -31,10 +31,12 @@ export function ThemePreview({ previewImage, title }: ThemePreviewProps) {
   }
 
   return (
-    <img
-      src={previewImage}
-      alt={`${title} theme preview`}
-      className="aspect-video w-full rounded-xl border border-[var(--border)] object-cover"
-    />
+    <div className="overflow-hidden rounded-xl border border-[var(--border)] bg-[var(--bg)]">
+      <img
+        src={previewImage}
+        alt={`${title} theme preview`}
+        className="h-auto w-full object-contain"
+      />
+    </div>
   );
 }

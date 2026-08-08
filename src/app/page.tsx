@@ -2,36 +2,42 @@ import Link from "next/link";
 import { ThemeCard } from "@/components/ThemeCard";
 import { ToolBadge } from "@/components/ToolBadge";
 import { getSiteConfig } from "@/config/site.config";
-import { getFeaturedThemes } from "@/lib/content/loadThemes";
+import { getAllThemes, getFeaturedThemes } from "@/lib/content/loadThemes";
 import { getAllTools, getToolBySlug } from "@/lib/content/loadTools";
 
 export default function Home() {
   const site = getSiteConfig();
   const tools = getAllTools();
   const featuredThemes = getFeaturedThemes();
+  const showcaseThemes =
+    featuredThemes.length > 0
+      ? featuredThemes
+      : getAllThemes().filter((theme) => Boolean(theme.previewImage)).slice(0, 3);
+  const heroTheme = showcaseThemes[0];
+  const heroTool = heroTheme ? getToolBySlug(heroTheme.tool) : undefined;
 
   return (
     <main>
       <section className="relative isolate overflow-hidden border-b border-[var(--border)]">
         <div
-          className="absolute inset-0 -z-10 opacity-90"
+          className="absolute inset-0 -z-10"
           style={{
             background:
-              "radial-gradient(circle at 75% 30%, rgba(45,212,191,.38), transparent 0 25%), linear-gradient(135deg, #0b1220 10%, #153149 55%, #0f766e 140%)",
+              "radial-gradient(circle at 82% 18%, rgba(45,212,191,.28), transparent 32%), linear-gradient(160deg, #0b1220 0%, #121a2b 48%, #0f1c24 100%)",
           }}
         />
-        <div className="mx-auto flex min-h-[min(720px,calc(100vh-64px))] max-w-6xl items-center px-4 py-20 sm:px-6">
-          <div className="max-w-3xl">
+        <div className="mx-auto grid max-w-6xl gap-10 px-4 py-16 sm:px-6 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:items-center lg:py-20">
+          <div className="max-w-xl">
             <p className="text-sm font-semibold tracking-[0.22em] text-[var(--accent)] uppercase">
               Developer themes
             </p>
             <h1
-              className="mt-5 text-5xl font-semibold tracking-[-0.05em] text-[var(--text)] sm:text-7xl"
+              className="mt-5 text-5xl font-semibold tracking-[-0.05em] text-[var(--text)] sm:text-6xl"
               style={{ fontFamily: "var(--font-display)" }}
             >
               {site.siteName}
             </h1>
-            <p className="mt-7 text-2xl font-medium tracking-tight sm:text-3xl">
+            <p className="mt-6 text-2xl font-medium tracking-tight sm:text-3xl">
               Make your coding surface feel intentional.
             </p>
             <p className="mt-4 max-w-xl text-base leading-7 text-[var(--muted)] sm:text-lg">
@@ -53,6 +59,28 @@ export default function Home() {
               </Link>
             </div>
           </div>
+
+          {heroTheme?.previewImage ? (
+            <Link
+              href={`/themes/${heroTheme.slug}`}
+              className="block overflow-hidden rounded-2xl border border-[var(--border)] bg-[var(--bg)] shadow-[0_24px_80px_rgba(0,0,0,.35)]"
+            >
+              <img
+                src={heroTheme.previewImage}
+                alt={`${heroTheme.title} full preview`}
+                className="h-auto w-full object-contain"
+              />
+              <div className="flex items-center justify-between gap-3 border-t border-[var(--border)] px-4 py-3">
+                <div>
+                  <p className="text-sm font-semibold text-[var(--text)]">{heroTheme.title}</p>
+                  <p className="text-xs text-[var(--muted)]">
+                    {heroTool?.name ?? heroTheme.tool} · full preview
+                  </p>
+                </div>
+                <span className="text-sm font-semibold text-[var(--accent)]">Open →</span>
+              </div>
+            </Link>
+          ) : null}
         </div>
       </section>
 
@@ -81,8 +109,8 @@ export default function Home() {
           Featured collection
         </p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight">Themes ready to shape your flow</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {featuredThemes.map((theme) => {
+        <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {showcaseThemes.map((theme) => {
             const tool = getToolBySlug(theme.tool);
             return tool ? <ThemeCard key={theme.slug} theme={theme} tool={tool} /> : null;
           })}
