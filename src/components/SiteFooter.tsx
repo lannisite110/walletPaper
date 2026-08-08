@@ -23,8 +23,16 @@ export function SiteFooter() {
             </a>
           </p>
         ) : null}
-        <p className="mt-6 text-xs text-[var(--muted)]">
-          © {new Date().getFullYear()} {site.siteName}
+        <p className="mt-6 flex flex-wrap items-center gap-3 text-xs text-[var(--muted)]">
+          <span>
+            © {new Date().getFullYear()} {site.siteName}
+          </span>
+          <a
+            href="/status"
+            className="text-[var(--accent)] transition-colors hover:text-[var(--text)]"
+          >
+            Status / 日志
+          </a>
         </p>
       </div>
     </footer>
